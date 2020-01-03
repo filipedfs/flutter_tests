@@ -41,9 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
           Text(
             'Aplicativo onde eu testo os packages do Flutter e outras funcionalidades',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24.0,height: 1.5),
+            style: TextStyle(fontSize: 24.0, height: 1.5),
           ),
-          SizedBox(height: 200.0,)
+          SizedBox(height: 200.0),
         ],
       ),
     );
