@@ -4,8 +4,9 @@ import 'package:flutter_tests/pages/file_picker.dart';
 import 'package:flutter_tests/pages/finger_pressure.dart';
 import 'package:flutter_tests/pages/flutter_pdfview.dart';
 import 'package:flutter_tests/pages/folder_picker.dart';
+import 'package:flutter_tests/pages/location.dart';
+import 'package:flutter_tests/pages/maps.dart';
 import 'package:flutter_tests/pages/pdf.dart';
-import 'package:folder_picker/folder_picker.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
@@ -81,6 +82,22 @@ class MyDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.push(context, MaterialPageRoute(builder: (context) => FingerPressurePage()));
+            },
+          ),
+          ListTile(
+            title: Text('Map: google_maps_flutter'),
+            leading: Icon(Icons.map),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MapsPage()));
+            },
+          ),
+          ListTile(
+            title: Text('Map: location'),
+            leading: Icon(Icons.map),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LocationPage()));
             },
           ),
         ],

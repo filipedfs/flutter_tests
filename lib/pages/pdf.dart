@@ -4,7 +4,7 @@ import 'package:flutter_tests/pages/pdf_generator.dart';
 
 class PDF extends StatelessWidget {
 
-  PDFHandler teste = PDFHandler();
+  final PDFHandler teste = PDFHandler();
 
   @override
   Widget build(BuildContext context) {
