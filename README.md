@@ -1,6 +1,6 @@
-# flutter_tests
+# Flutter Tests
 
-A application to test flutter functionalities. Not meant to be public.
+A application to test flutter functionalities. Not meant to be released.
 
 ## Getting Started
 

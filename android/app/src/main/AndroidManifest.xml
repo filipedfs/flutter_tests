@@ -38,6 +38,6 @@
      Primeiro criei um arquivo "api.keys" no diretório do Android.
      Escrevi no arquivo da seguinte maneira: MapsApiKey=APIKEY
      Depois criei uma variável no build.gradle que pega a Api Key deste arquivo.
-     Por fim, adicionei no manifest a variável que ven do build.gradle.
+     Por fim, adicionei no manifest a variável que vem do build.gradle.
      Essa idéia eu tive a partir dessa página do Flutter: https://flutter.dev/docs/deployment/android
      Como colocar variáveis no Manifest é explicado nesta página: https://developer.android.com/studio/build/manifest-build-variables -->
