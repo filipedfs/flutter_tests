@@ -21,11 +21,24 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+// Api Keys
+def apiKeys = new Properties()
+def apiKeysFile = rootProject.file('api.keys')
+if (apiKeysFile.exists()) {
+    apiKeys.load(new FileInputStream(apiKeysFile))
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+
+    dependencies {
+//        classpath 'com.android.tools.build:gradle:3.3.0'
+//        classpath 'com.google.gms:google-services:4.2.0'
+    }
+
     compileSdkVersion 28
 
     sourceSets {
@@ -44,6 +57,9 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Api Keys
+        manifestPlaceholders = [mapsApiKey:apiKeys['MapsApiKey']]
     }
 
     buildTypes {

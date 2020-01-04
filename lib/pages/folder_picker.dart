@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+import 'package:flutter_tests/components/drawer.dart';
 import 'package:permission/permission.dart';
 import 'package:folder_picker/folder_picker.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class _FolderPickerDemoState extends State<FolderPickerDemo> {
 
   Future<void> getStorage() async {
 //    final directory = await getExternalStorageDirectory();
-  final directory = Directory('/storage/emulated/0/');
+    final directory = Directory('/storage/emulated/0/');
     setState(() => externalDirectory = directory);
   }
 
@@ -45,6 +45,10 @@ class _FolderPickerDemoState extends State<FolderPickerDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: MyDrawer(),
+        appBar: AppBar(
+          title: Text('Folder Picker'),
+        ),
         body: Center(
             child: (externalDirectory != null)
                 ? Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
