@@ -23,6 +23,13 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  flutter_pdfview: ^1.0.0+10
+  path_provider: ^1.5.1
+  path: ^1.6.4
+  pdf: ^1.4.0
+  file_picker: ^1.4.3+2
+  folder_picker: ^0.3.0
+  permission: ^0.1.5
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +41,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  assets:
+    - PDFs/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
