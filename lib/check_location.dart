@@ -1,29 +1,34 @@
 import 'dart:math';
 
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 class PointLocation {
-  bool pointOnVertex = true; // Check if the point sits exactly on one of the vertices?
+  bool _pointOnVertex = true; // Check if the point sits exactly on one of the vertices?
 
   PointLocation();
 
-  pointInPolygon({
-    String originalPoint,
-    List<String> polygon,
+  bool pointInPolygon({
+    var location,
+    List<LatLng> polygon,
     bool pointOnVertex = true,
   }) {
-    this.pointOnVertex = pointOnVertex;
+    this._pointOnVertex = pointOnVertex;
+
+    LatLng _location = LatLng(location.latitude, location.longitude);
 
     // Transform string coordinates into arrays with x and y values
-    Map<String, double> point = this.pointStringToCoordinates(originalPoint);
+    Map<String, double> point = this._pointStringToCoordinates(_location);
 
     List<Map<String, double>> vertices = List();
 
-    for (String vertex in polygon) {
-      vertices.add(this.pointStringToCoordinates(vertex));
+    for (LatLng vertex in polygon) {
+      vertices.add(this._pointStringToCoordinates(vertex));
     }
 
     // Check if the point sits exactly on a vertex
-    if (this.pointOnVertex == true && this._checkPointOnVertex(point, vertices) == true) {
-      return "vertex";
+    if (this._pointOnVertex == true && this._checkPointOnVertex(point, vertices) == true) {
+      // Point sits exactly on a vertex
+      return true;
     }
 
     // Check if the point is inside the polygon or on the boundary
@@ -36,12 +41,13 @@ class PointLocation {
 
       Map<String, double> vertex2 = vertices[i];
 
+      // Check if point is on an horizontal polygon boundary
       if (vertex1['y'] == vertex2['y'] &&
           vertex1['y'] == point['y'] &&
           point['x'] > min(vertex1['x'], vertex2['x']) &&
           point['x'] < max(vertex1['x'], vertex2['x'])) {
-        // Check if point is on an horizontal polygon boundary
-        return "boundary";
+        // Point is on an horizontal polygon boundary
+        return true;
       }
 
       if (point['y'] > min(vertex1['y'], vertex2['y']) &&
@@ -50,9 +56,10 @@ class PointLocation {
           vertex1['y'] != vertex2['y']) {
         double xinters = (point['y'] - vertex1['y']) * (vertex2['x'] - vertex1['x']) / (vertex2['y'] - vertex1['y']) + vertex1['x'];
 
+        // Check if point is on the polygon boundary (other than horizontal)
         if (xinters == point['x']) {
-          // Check if point is on the polygon boundary (other than horizontal)
-          return "boundary";
+          // Point is on the polygon boundary (other than horizontal)
+          return true;
         }
 
         if (vertex1['x'] == vertex2['x'] || point['x'] <= xinters) {
@@ -62,9 +69,11 @@ class PointLocation {
     }
     // If the number of edges we passed through is odd, then it's in the polygon.
     if (intersections % 2 != 0) {
-      return "inside";
+      // Point is inside polygon
+      return true;
     } else {
-      return "outside";
+      // Point is outside polygon
+      return false;
     }
   }
 
@@ -76,8 +85,7 @@ class PointLocation {
     }
   }
 
-  Map<String, double> pointStringToCoordinates(String pointString) {
-    List<String> coordinates = pointString.split(' ');
-    return {"x": double.parse(coordinates[0]), "y": double.parse(coordinates[1])};
+  Map<String, double> _pointStringToCoordinates(LatLng coords) {
+    return {"x": coords.longitude, "y": coords.latitude};
   }
 }

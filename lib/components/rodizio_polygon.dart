@@ -1051,11 +1051,16 @@ class RodizioPolygon {
     // Converts the Map of coordinates to a list of LatLng objects.
     var polygonCoords = _coords.entries
         .map((entry) => LatLng(
-              PointLocation().pointStringToCoordinates(entry.value)['y'],
-              PointLocation().pointStringToCoordinates(entry.value)['x'],
+              this._pointStringToCoordinates(entry.value)['y'],
+              this._pointStringToCoordinates(entry.value)['x'],
             ))
         .toList();
 
     return polygonCoords;
+  }
+
+  Map<String, double> _pointStringToCoordinates(String pointString) {
+    List<String> coordinates = pointString.split(' ');
+    return {"x": double.parse(coordinates[0]), "y": double.parse(coordinates[1])};
   }
 }
