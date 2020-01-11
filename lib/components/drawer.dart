@@ -7,6 +7,7 @@ import 'package:flutter_tests/pages/folder_picker.dart';
 import 'package:flutter_tests/pages/location.dart';
 import 'package:flutter_tests/pages/maps.dart';
 import 'package:flutter_tests/pages/pdf.dart';
+import 'package:flutter_tests/pages/youtube_player_flutter.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
@@ -98,6 +99,14 @@ class MyDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.push(context, MaterialPageRoute(builder: (context) => LocationPage()));
+            },
+          ),
+          ListTile(
+            title: Text('Video: youtube_player_flutter'),
+            leading: Icon(Icons.map),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => YoutubePlayerPage()));
             },
           ),
         ],

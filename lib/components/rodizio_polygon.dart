@@ -1,4 +1,3 @@
-import 'package:flutter_tests/check_location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class RodizioPolygon {

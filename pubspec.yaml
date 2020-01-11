@@ -34,6 +34,7 @@ dependencies:
   location: ^2.3.5
   csv: ^4.0.3
   latlong: ^0.6.1
+  youtube_player_flutter: ^6.0.3+2
 
 dev_dependencies:
   flutter_test:
@@ -43,5 +44,6 @@ flutter:
   assets:
     - PDFs/
     - assets/rodizio_coords.csv
+    - assets/ypf.png
 
   uses-material-design: true
